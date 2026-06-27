@@ -200,6 +200,40 @@ app.get('/api/logs', async (req, res) => {
   }
 });
 
+// 4. ADMIN ENDPOINTS
+app.get('/api/admin/users', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, reg_no, created_at FROM mess_users ORDER BY name ASC');
+    return res.json(result.rows);
+  } catch (error) {
+    console.error('Error in /api/admin/users:', error);
+    return res.status(500).json({ error: 'Server error retrieving users' });
+  }
+});
+
+app.get('/api/admin/logs', async (req, res) => {
+  try {
+    const { meal_type } = req.query;
+    let query = `
+      SELECT al.id, u.name, u.reg_no, al.meal_type, al.marked_at 
+      FROM mess_attendance_logs al
+      JOIN mess_users u ON al.user_id = u.id
+    `;
+    const params = [];
+    if (meal_type) {
+      query += ' WHERE al.meal_type = $1 ';
+      params.push(meal_type);
+    }
+    query += ' ORDER BY al.marked_at DESC';
+    const result = await pool.query(query, params);
+    return res.json(result.rows);
+  } catch (error) {
+    console.error('Error in /api/admin/logs:', error);
+    return res.status(500).json({ error: 'Server error retrieving admin logs' });
+  }
+});
+
+
 // Start server and initialize database tables
 async function startServer() {
   try {

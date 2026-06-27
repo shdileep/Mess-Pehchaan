@@ -608,29 +608,6 @@ export default function App() {
                   )}
                 </div>
 
-                {/* Simulation Panel */}
-                <div className="w-full max-w-md mt-6 bg-slate-900 border border-slate-800 rounded-2xl p-4">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 text-center">
-                    📸 Simulation Controls (Webcam Fallback)
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => simulateScan('/test_faces/student_face_1.png')}
-                      className="py-2.5 bg-slate-950 hover:bg-slate-800 text-xs font-semibold rounded-xl border border-slate-800 hover:border-amber-400/50 transition flex flex-col items-center gap-1"
-                    >
-                      <span>👦 Scan Student 1</span>
-                      <span className="text-[9px] text-slate-500">(Test Face 1)</span>
-                    </button>
-                    <button
-                      onClick={() => simulateScan('/test_faces/student_face_2.png')}
-                      className="py-2.5 bg-slate-950 hover:bg-slate-800 text-xs font-semibold rounded-xl border border-slate-800 hover:border-amber-400/50 transition flex flex-col items-center gap-1"
-                    >
-                      <span>👧 Scan Student 2</span>
-                      <span className="text-[9px] text-slate-500">(Test Face 2)</span>
-                    </button>
-                  </div>
-                </div>
-
                 {/* Floating Register Button if not recognized */}
                 <AnimatePresence>
                   {showRegisterBtn && (
@@ -940,28 +917,7 @@ export default function App() {
                   )}
                 </div>
 
-                {/* Simulation Capture Options */}
-                {!capturedPhoto && (
-                  <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 text-center space-y-2">
-                    <p className="text-[10px] text-slate-400">Or use a preloaded test face:</p>
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => simulateCapture('/test_faces/student_face_1.png')}
-                        className="flex-1 py-1.5 bg-slate-950 hover:bg-slate-800 text-xs font-semibold rounded-lg transition border border-slate-800 hover:border-amber-400/30"
-                      >
-                        👦 Use Face 1
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => simulateCapture('/test_faces/student_face_2.png')}
-                        className="flex-1 py-1.5 bg-slate-950 hover:bg-slate-800 text-xs font-semibold rounded-lg transition border border-slate-800 hover:border-amber-400/30"
-                      >
-                        👧 Use Face 2
-                      </button>
-                    </div>
-                  </div>
-                )}
+
               </div>
             </motion.div>
           )}
