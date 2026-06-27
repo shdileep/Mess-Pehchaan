@@ -49,9 +49,3 @@ AI-driven insights and an autonomous assistant to optimize mess usage, menus, an
 5. Continuous Improvement
    - All agent actions and outcomes are logged. Periodic retraining and label collection improve models over time.
 
-## Quick Start (local)
-1. Clone the repository.
-2. Create a Python virtualenv and install requirements: `pip install -r requirements.txt`
-3. Configure environment variables and a database (Postgres or SQLite).
-4. Run backend: `uvicorn app.main:app --reload` (or `flask run`). Start frontend and any workers (Redis + Celery).
-5. Load sample data and run model pipelines for initial forecasts and index building.
